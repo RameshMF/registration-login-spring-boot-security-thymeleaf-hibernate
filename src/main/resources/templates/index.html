@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Bootstrap CSS Demo</title>
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Employee First Name</th>
+				<th>Employee Last Name</th>
+				<th>Employee Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee : ${employees}">
+				<td th:text="${employee.firstName}"></td>
+				<td th:text="${employee.lastName}"></td>
+				<td th:text="${employee.email}"></td>
+			</tr>
+		</tbody>
+	</table>
+	Welcome <span sec:authentication="principal.username"> User</span>
+</body>
+</html>
