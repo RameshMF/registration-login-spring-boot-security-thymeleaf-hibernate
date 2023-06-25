@@ -1,7 +1,12 @@
 package net.javaguides.springboot.web;
 
+import net.javaguides.springboot.model.Slot;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Date;
 
 @Controller
 public class MainController {
@@ -10,9 +15,15 @@ public class MainController {
 	public String login() {
 		return "login";
 	}
+
+	@PostMapping("/login")
+	public String Postlogin() {
+		return "login";
+	}
 	
 	@GetMapping("/")
-	public String home() {
+	public String home(Model model) {
+		model.addAttribute("Slot",new Slot("asw",new Date(123,2,2)));
 		return "index";
 	}
 }

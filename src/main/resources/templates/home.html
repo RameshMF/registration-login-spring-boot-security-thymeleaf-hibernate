@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: head"> </head>
+<body style="background-color: rgb(27, 27, 27)">
+<nav th:replace="layouts :: main_navbar"></nav>
+<div class="container">
+  <br />
+  <h1 align="center" style="color: white; font-weight: bold">
+    Download YTS YIFY movies: HD smallest size
+  </h1>
+  <p
+          style="
+          color: rgb(236, 240, 245);
+          padding-left: 10%;
+          padding-right: 10%;
+          padding-top: 2%;
+          padding-bottom: 2%;
+        "
+  >
+    Welcome to the official YTS.RS website. Here you will be able to browse
+    and download YIFY movies in excellent 720p, 1080p, 2160p 4K and 3D
+    quality, all at the smallest file size. Only here: YTS Movies Torrents.
+  </p>
+  <div
+          style="
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+        "
+  >
+    <i class="material-icons">rate_review</i>
+    <span style="width: 10px"></span>
+    <p>Top Reviewed Movies</p>
+  </div>
+
+  <hr style="background-color: rgb(154, 156, 156)"/>
+
+  <div class="container">
+    <div class="row">
+      <div class="col" th:each="movie : ${movies}">
+        <a class="text-decoration-none"
+           style="
+                padding: 5px;
+                margin: 5px;
+                border: none;
+                background-color: rgb(27, 27, 27);
+              "
+           th:href="@{/movies/{id}(id=${movie.getId()})}"
+        >
+          <div
+                  class="card"
+                  style="width: 18rem;border: 3px solid white;border-radius: 3px;"
+          >
+            <img
+                    height="300px"
+                    th:src="@{${movie.poster}}"
+                    class="card-img-top"
+                    alt="..."
+            />
+          </div>
+          <div
+                  style="
+                  padding-left: 5px;
+                  padding-top: 5px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                "
+          >
+            <p
+                    style="color: white; font-weight: bold"
+                    class="card-title"
+                    th:text="${movie.name}"
+            ></p>
+            <p
+                    style="color: grey"
+                    class="card-text"
+                    th:text="${movie.releaseDate}"
+            ></p>
+          </div>
+        </a>
+        <div class="row" style="padding: 0;margin: 0;width:18rem; color:white">
+          <div class="col">
+                        <span th:if="${movie.isUserAvailableInFavouriteMovie(#authentication.getPrincipal().id)}">
+                        <a th:href="@{/movies/{id}/remove-from-favourite (id=${movie.id})}" style="color: darkred"><span
+                                class="material-icons">favorite</span></a>
+                      </span>
+            <span th:unless="${movie.isUserAvailableInFavouriteMovie(#authentication.getPrincipal().id)}">
+                        <a th:href="@{/movies/{id}/add-to-favourite (id=${movie.id})}" style="color: darkred"><span class="material-icons">favorite_border</span></a>
+                      </span>
+          </div>
+          <div class="col" style="text-align: right">
+                      <span th:if="${movie.isUserAvailableInMovieWatchlist(#authentication.getPrincipal().id)}">
+                        <a th:href="@{/movies/{id}/remove-from-watchlist (id=${movie.id})}" style="color: orange"><span
+                                class="material-icons">turned_in</span></a>
+                      </span>
+            <span th:unless="${movie.isUserAvailableInMovieWatchlist(#authentication.getPrincipal().id)}">
+                        <a th:href="@{/movies/{id}/add-to-watchlist (id=${movie.id})}" style="color: orange"><span class="material-icons">bookmark_border</span></a>
+                      </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+</div>
+</body>
+</html>
