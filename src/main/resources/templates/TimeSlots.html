@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class = "container">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Please Select a Slot To Book</h1>
+
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 col-md-offset-3">
+            <p>your are booking for the date of: <span th:text="${Slot.getBirthDate()}"></span></p>
+            <form th:action="@{/BookSlot}" method="post"  >
+                <input type="hidden" th:name="sport" th:value="${Slot.getSport()}" />
+                <input type="date" th:field="${Slot.birthDate}" id="Slot-birth-date" hidden="hidden">
+                <input type="hidden" th:name="options" th:value="${Slot.getOptions()}" />
+                <div th:each="option : ${options}" >
+                    <input type="radio" th:name="selectedOption" th:value="${option}" />
+                    <label th:text="${option}"></label>
+                </div>
+                <div th:if="${options.isEmpty()}">
+                    <!-- Content to display when the condition is true -->
+                    <p>Sry no slots available</p>
+                </div>
+                <br>
+                <label for="name">name:</label>
+                <input type="text" id="name" th:name="name" th:value="${Slot.getPerson().getName()}" />
+                <label for="email" >email:</label>
+                <input type="text" id="email" th:name="email" th:value="${Slot.getPerson().getEmail()}" />
+                <br><br>
+                <div>
+                    <button type="submit" class="button">Book a Slot</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</div>
+</html>

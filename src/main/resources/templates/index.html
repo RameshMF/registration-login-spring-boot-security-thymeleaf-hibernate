@@ -7,6 +7,7 @@
 		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 		  crossorigin="anonymous">
+
 </head>
 <body>
 
@@ -38,25 +39,26 @@
 			<form th:action="@{/slots}" method="post" th:object="${Slot}">
 				<div>
 								<label for="sport">Choose a Sport:</label>
-
-								<select name="sport" id="sport">
-									<option value="cricket">cricket</option>
-									<option value="tabletennis">table tennis</option>
-									<option value="badminton">badminton</option>
-									<option value="squash">squash</option>
+								<select name="sport" id="sport" >
+									<option value="Cricket">Cricket</option>
+									<option value="TableTennis">TableTennis</option>
+									<option value="Badminton">Badminton</option>
+									<option value="Squash">Squash</option>
 								</select>
 				</div> 	<br>
 				<div>
 					<label for="Slot-birth-date">Date of birth:</label>
-					<input type="date" th:field="${Slot.birthDate}" id="Slot-birth-date"/>
+					<input type="date" th:field="${Slot.birthDate}" id="Slot-birth-date">
 				</div>
 				<br>
 				<div>
 					<button type="submit" class="button">Get Slots</button>
 				</div>
 			</form>
+
 		</div>
 	</div>
 </div>
+
 </body>
 </html>

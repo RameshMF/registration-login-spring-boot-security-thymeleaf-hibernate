@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				 "/registration**",
 					"/password**",
 					"forpassword**",
+					"TimeSlots**",
 	                "/js/**",
 	                "/css/**",
 	                "/img/**").permitAll()
