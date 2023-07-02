@@ -15,3 +15,9 @@ Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate a
 Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 7 at https://youtu.be/Tu3lBxlFBlM
 
 Registration and Login with Spring Boot, Spring Security, Thymeleaf, Hibernate and MySQL - PART 8 at https://youtu.be/KKjKFLKlCbc
+
+functionality
+1-> login and register
+2-> user which is mailid cannot book a same sport in same booking date
+3-> user can advance book to 7 days only
+4-> we can added new slots and remove slots with each sport
