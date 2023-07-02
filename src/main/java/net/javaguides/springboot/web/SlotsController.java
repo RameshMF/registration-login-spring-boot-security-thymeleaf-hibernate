@@ -29,15 +29,20 @@ public class SlotsController {
 
     @PostMapping()
     public String getSlot(Model model, @ModelAttribute("Slot") Slot slot) {
-        Set<String> availableSlots = slotsService.getAvailableSlots(slot);
-        model.addAttribute("options", availableSlots);
-        Slot slot1 = new Slot();
-        slot1.setOptions(availableSlots);
-        slot1.setBirthDate(slot.getBirthDate());
-        slot1.setSport(slot.getSport());
-        slot1.setPerson(new Person("uewkoi12345@gmail.com","name"));
-        model.addAttribute("Slot",slot1);
-        return "TimeSlots";
+       if(!slotsService.getBooked(slot.getSport(),slot.getUsername(),slot.getBirthDate())){
+           Set<String> availableSlots = slotsService.getAvailableSlots(slot);
+           model.addAttribute("options", availableSlots);
+           Slot slot1 = new Slot();
+           slot1.setOptions(availableSlots);
+           slot1.setBirthDate(slot.getBirthDate());
+           slot1.setSport(slot.getSport());
+           slot1.setUsername(slot.getUsername());
+           slot1.setPerson(new Person("uewkoi12345@gmail.com","name"));
+           model.addAttribute("Slot",slot1);
+           return "TimeSlots";
+       }
+        model.addAttribute("booked",true);
+        return "error";
     }
 
 

@@ -63,4 +63,13 @@ public class SlotsService {
            }
         return slots;
        }
+
+    public boolean getBooked(String sport,String username,Date date) {
+        if(!CollectionUtils.isEmpty(slotRepository.isBooked(date,sport,username))) {
+            return true;
+        }
+        return false;
+    }
+
+
     }

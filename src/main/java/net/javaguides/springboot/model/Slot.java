@@ -4,9 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,6 +32,17 @@ public class Slot implements Serializable {
     @ElementCollection
     @CollectionTable(name = "availableSlots")
      private Set<String> availableSlots;
+
+    private String username;
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Long getSlotId() {
         return slotId;
@@ -83,9 +92,10 @@ public class Slot implements Serializable {
         this.options = options;
     }
 
-    public Slot(String sport, Date birthdate) {
+    public Slot(String sport, Date birthdate,String username) {
         this.sport = sport;
         this.birthDate = birthdate;
+        this.username = username;
     }
 
     public Date getBirthDate() {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+
 @Controller
 @RequestMapping("/BookSlot")
 public class BookingController {
@@ -20,7 +21,6 @@ public class BookingController {
     @ResponseBody
     public ResponseEntity<String> bookSlot(@ModelAttribute("Slot") Slot slot){
         slot.setBooked(true);
-        slot.setPerson(new Person("g.test10@gmail.com","suresh"));
         slotRepository.save(slot);
         return ResponseEntity.ok("Success");
     }
